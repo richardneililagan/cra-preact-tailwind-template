@@ -15,13 +15,19 @@ const preactWebpackAliases = addWebpackAlias({
 })
 
 const preactBabelPragma = addBabelPlugins(
-  ['@babel/plugin-transform-react-jsx', { pragma: 'h' }],
+  [
+    '@babel/plugin-transform-react-jsx',
+    {
+      importSource: 'preact',
+      runtime: 'automatic',
+    },
+  ],
   [
     'babel-plugin-jsx-pragmatic',
     {
       module: 'preact',
-      import: 'h',
-      export: 'h',
+      import: 'preact',
+      export: 'preact',
     },
   ]
 )
