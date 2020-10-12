@@ -1,0 +1,35 @@
+---
+parser: babel-eslint
+
+extends:
+  - preact
+  - plugin:unicorn/recommended
+  - plugin:jest-dom/recommended
+  - plugin:testing-library/recommended
+  - plugin:testing-library/react
+  - prettier
+  - prettier/react
+  - prettier/unicorn
+
+rules:
+  # :: our webpack configuration should take care of automatically injecting the 
+  #    Preact { h } pragma into relevant documents.
+  react/react-in-jsx-scope: off
+
+  # :: you might want to enable this if you don't particularly do 
+  #    smoke tests with just something like `render(<MyComponent />)` in a test.
+  jest/expect-expect: off 
+
+  unicorn/filename-case:
+    - error
+    - cases:
+        kebabCase: true # :: standard file naming convention
+        pascalCase: true # :: for classes and components
+
+  unicorn/prevent-abbreviations:
+    - error
+    - whitelist:
+        env: true
+        props: true
+        ref: true
+        param: true
